@@ -333,7 +333,7 @@ export default ProductDetails;
 
 export async function getStaticPaths() {
   // here i loop the products list and get all products links (paths) and return it
-  const products = await fetchDataFromApi("/api/products?populate=*");
+  //const products = await fetchDataFromApi("/api/products?populate=*");
   const paths =
     //products?.data?
     [
@@ -360,7 +360,7 @@ export async function getStaticPaths() {
         id: 2,
         //slug: "slug",
         attributes: {
-          id: 1,
+          id: 2,
           slug: "test",
           name: "nouhack hat",
           description: "this is the second of the first product",
@@ -382,7 +382,19 @@ export async function getStaticPaths() {
     }));
 
   return {
-    paths,
+    //paths,
+    paths: [
+      {
+        params: {
+          slug: "nouhack",
+        },
+      },
+      {
+        params: {
+          slug: "test",
+        },
+      },
+    ],
     fallback: false,
   };
 }
